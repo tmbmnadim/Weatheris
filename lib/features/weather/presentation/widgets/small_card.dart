@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/config/theme/app_theme.dart';
 
 class SmallStatCard extends StatelessWidget {
   const SmallStatCard({
@@ -15,7 +16,16 @@ class SmallStatCard extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.teal, borderRadius: BorderRadius.circular(5)),
+          color: primaryColor,
+          borderRadius: BorderRadius.circular(5),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black54,
+              offset: Offset(0, 5),
+              blurRadius: 4,
+            )
+          ],
+        ),
         child: Text(
           text,
           textAlign: TextAlign.center,

@@ -15,6 +15,11 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.4
   equatable: ^2.0.5
+  dio: ^5.4.1
+  weather: ^3.1.1
+  geolocator: ^11.0.0
+  flutter_easyloading: ^3.0.5
+  get_it: ^7.6.7
 
 dev_dependencies:
   flutter_test:

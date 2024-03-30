@@ -1,0 +1,1 @@
+String weatherApikey = "8e5558042683340bcd021f5802768bec";

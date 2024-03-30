@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "mansur.nadim.weatheris.weatheris"
-    compileSdk 33
+    compileSdk 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
