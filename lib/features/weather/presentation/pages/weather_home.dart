@@ -18,7 +18,17 @@ class _WeatherHomeState extends State<WeatherHome> {
     Size scrSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mar 15, 08:21pm"),
+        title: BlocBuilder<WeatherBloc, WeatherState>(
+          builder: (context, state) {
+            if (state is WeatherSuccess) {
+              return Text(state.weatherData!.list[0].dtTxt.toString());
+            } else if (state is WeatherFailure) {
+              return Text(state.exception.toString());
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
+        ),
         backgroundColor: Colors.transparent,
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -50,20 +60,24 @@ class _WeatherHomeState extends State<WeatherHome> {
                 child: BlocBuilder<WeatherBloc, WeatherState>(
                   builder: (context, state) {
                     if (state is WeatherSuccess) {
+                      var weatherList = state.weatherData!.list[0];
+
                       return WeatherScreen(
-                        weatherIcon:
-                            state.weatherData!.list[0].weather[0].icon,
-                        areaName: "${state.weatherData!.city.name}, ${state.weatherData!.city.country}",
-                        weatherDescription: state.weatherData!.list[0].weather[0].main,
-                        temp: "${state.weatherData!.list[0].main.temp} °C",
-                        windStatus: state.weatherData!.list[0].weather[0].description,
-                        feelsLike: state.weatherData!.list[0].main.feelsLike.toString(),
-                        windDirection: state.weatherData!.list[0].wind.deg.toString(),
-                        pressure: state.weatherData!.list[0].main.pressure.toString(),
-                        humidity: state.weatherData!.list[0].main.humidity.toString(),
-                        dewpoint: state.weatherData!.list[0].main.humidity.toString(),
-                        visibility: state.weatherData!.list[0].visibility.toString(),
-                        speed: "${state.weatherData!.list[0].wind.speed} m/s",
+                        weatherIcon: weatherList.weather[0].icon,
+                        areaName:
+                            "${state.weatherData!.city.name == "Bangsal" ? "Dhaka" : state.weatherData!.city.name}, ${state.weatherData!.city.country}",
+                        weatherDescription: weatherList.weather[0].main,
+                        temp: "${weatherList.main.temp} °C",
+                        windStatus: weatherList.weather[0].description,
+                        feelsLike: weatherList.main.feelsLike.toString(),
+                        windDirection:
+                            "${weatherList.wind.deg}° from the North",
+                        pressure: "${weatherList.main.pressure} hPa",
+                        humidity: weatherList.main.humidity.toString(),
+                        dewpoint: weatherList.main.humidity.toString(),
+                        visibility:
+                            "${(weatherList.visibility / 1000).toStringAsFixed(0)} km",
+                        speed: "${weatherList.wind.speed} m/s",
                       );
                     } else if (state is WeatherFailure) {
                       return Center(
