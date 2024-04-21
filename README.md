@@ -1,16 +1,14 @@
-# weatheris
+# Weather Is
 
-A simple Weather app using bloc.
+A simple Weather app using bloc. Open Weather Api was used in this project to get weather status. It uses Geo Locator Package to determine users location and then shows data for that location.
 
-## Getting Started
+Get it was used in this project for Dependency injection. 
 
-This project is a starting point for a Flutter application.
+## Packages used:
+1. Flutter Bloc
+2. Equatable
+3. Dio
+4. Geo Locator
+5. Get It
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![This is a image for the Weather Is app with a screenshot of the app.](/screenshots/weatheris.png "Weather Is")

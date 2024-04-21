@@ -25,7 +25,7 @@ class _WeatherHomeState extends State<WeatherHome> {
             } else if (state is WeatherFailure) {
               return Text(state.exception.toString());
             } else {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
           },
         ),

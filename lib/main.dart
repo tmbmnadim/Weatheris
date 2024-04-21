@@ -18,12 +18,12 @@ class WeatherIs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'WeatherIs',
-      theme: theme(),
-      home: BlocProvider<WeatherBloc>(
-        create: (context) => sl()..add(const FetchWeather()),
-        child: const WeatherHome(),
+    return BlocProvider<WeatherBloc>(
+      create: (context) => sl()..add(const FetchWeather()),
+      child: MaterialApp(
+        title: 'WeatherIs',
+        theme: theme(),
+        home: const WeatherHome(),
       ),
     );
   }
